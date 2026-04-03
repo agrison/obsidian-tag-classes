@@ -3,7 +3,7 @@
   "name": "Tag Classes",
   "version": "1.0.0",
   "minAppVersion": "1.0.0",
-  "description": "Automatically adds note tags as CSS classes on the view container, enabling tag-based styling via snippets.",
+  "description": "Automatically adds note tags as CSS classes on the view container for tag-based styling.",
   "author": "agrison",
   "authorUrl": "https://github.com/agrison",
   "isDesktopOnly": false
