@@ -64,7 +64,7 @@ export default class TagClassesPlugin extends Plugin {
 
     const tags = new Set<string>();
 
-    const frontmatterTags = cache.frontmatter?.tags;
+    const frontmatterTags = cache.frontmatter?.["tags"] as string | string[] | undefined;
     if (frontmatterTags) {
       const arr = Array.isArray(frontmatterTags)
         ? frontmatterTags
@@ -147,7 +147,7 @@ export default class TagClassesPlugin extends Plugin {
 
   // ─── Persistance  ──────────────────────────────────────────────────
   async loadSettings() {
-    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    this.settings = { ...DEFAULT_SETTINGS, ...((await this.loadData()) as Partial<TagClassesSettings>) };
   }
 
   async saveSettings() {
@@ -171,17 +171,12 @@ class TagClassesSettingTab extends PluginSettingTab {
     containerEl.empty();
 
     new Setting(containerEl)
-      .setName("Tag Classes")
-      .setHeading();
-
-    new Setting(containerEl)
       .setName("CSS prefix")
       .setDesc(
-        'Prefix added before each tag. Default "tag-" → class "tag-myTag".'
+        "Prefix added before each tag, default \"tag-\""
       )
       .addText((text) =>
         text
-          .setPlaceholder("tag-")
           .setValue(this.plugin.settings.prefix)
           .onChange(async (value) => {
             this.plugin.settings.prefix = value || "tag-";
