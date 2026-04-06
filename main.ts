@@ -170,7 +170,9 @@ class TagClassesSettingTab extends PluginSettingTab {
     const { containerEl } = this;
     containerEl.empty();
 
-    containerEl.createEl("h2", { text: "Tag Classes" });
+    new Setting(containerEl)
+      .setName("Tag Classes")
+      .setHeading();
 
     new Setting(containerEl)
       .setName("CSS prefix")
@@ -201,7 +203,10 @@ class TagClassesSettingTab extends PluginSettingTab {
           })
       );
 
-    containerEl.createEl("h3", { text: "Usage" });
+    new Setting(containerEl)
+      .setName("Usage")
+      .setHeading();
+    
     containerEl.createEl("p", {
       text: 'The tags of each note are automatically added as CSS classes on the view container. Example: a tag "projet" becomes the class "tag-projet".',
     });
