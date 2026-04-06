@@ -1,7 +1,7 @@
 {
   "id": "tag-classes",
   "name": "Tag Classes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minAppVersion": "1.0.0",
   "description": "Automatically adds note tags as CSS classes on the view container for tag-based styling.",
   "author": "agrison",
